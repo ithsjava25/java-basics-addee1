@@ -43,7 +43,8 @@ class MainTest {
                 [{"SEK_per_kWh":0.12229,"EUR_per_kWh":0.01112,"EXR":10.997148,"time_start":"2025-09-04T00:00:00+02:00","time_end":"2025-09-04T01:00:00+02:00"},{"SEK_per_kWh":0.09886,"EUR_per_kWh":0.00899,"EXR":10.997148,"time_start":"2025-09-04T01:00:00+02:00","time_end":"2025-09-04T02:00:00+02:00"},{"SEK_per_kWh":0.09095,"EUR_per_kWh":0.00827,"EXR":10.997148,"time_start":"2025-09-04T02:00:00+02:00","time_end":"2025-09-04T03:00:00+02:00"},{"SEK_per_kWh":0.04201,"EUR_per_kWh":0.00382,"EXR":10.997148,"time_start":"2025-09-04T03:00:00+02:00","time_end":"2025-09-04T04:00:00+02:00"},{"SEK_per_kWh":0.04146,"EUR_per_kWh":0.00377,"EXR":10.997148,"time_start":"2025-09-04T04:00:00+02:00","time_end":"2025-09-04T05:00:00+02:00"},{"SEK_per_kWh":0.04465,"EUR_per_kWh":0.00406,"EXR":10.997148,"time_start":"2025-09-04T05:00:00+02:00","time_end":"2025-09-04T06:00:00+02:00"},{"SEK_per_kWh":0.32991,"EUR_per_kWh":0.03,"EXR":10.997148,"time_start":"2025-09-04T06:00:00+02:00","time_end":"2025-09-04T07:00:00+02:00"},{"SEK_per_kWh":0.47123,"EUR_per_kWh":0.04285,"EXR":10.997148,"time_start":"2025-09-04T07:00:00+02:00","time_end":"2025-09-04T08:00:00+02:00"},{"SEK_per_kWh":0.68182,"EUR_per_kWh":0.062,"EXR":10.997148,"time_start":"2025-09-04T08:00:00+02:00","time_end":"2025-09-04T09:00:00+02:00"},{"SEK_per_kWh":0.4125,"EUR_per_kWh":0.03751,"EXR":10.997148,"time_start":"2025-09-04T09:00:00+02:00","time_end":"2025-09-04T10:00:00+02:00"},{"SEK_per_kWh":0.29571,"EUR_per_kWh":0.02689,"EXR":10.997148,"time_start":"2025-09-04T10:00:00+02:00","time_end":"2025-09-04T11:00:00+02:00"},{"SEK_per_kWh":0.06136,"EUR_per_kWh":0.00558,"EXR":10.997148,"time_start":"2025-09-04T11:00:00+02:00","time_end":"2025-09-04T12:00:00+02:00"},{"SEK_per_kWh":0.03662,"EUR_per_kWh":0.00333,"EXR":10.997148,"time_start":"2025-09-04T12:00:00+02:00","time_end":"2025-09-04T13:00:00+02:00"},{"SEK_per_kWh":0.0375,"EUR_per_kWh":0.00341,"EXR":10.997148,"time_start":"2025-09-04T13:00:00+02:00","time_end":"2025-09-04T14:00:00+02:00"},{"SEK_per_kWh":0.26822,"EUR_per_kWh":0.02439,"EXR":10.997148,"time_start":"2025-09-04T14:00:00+02:00","time_end":"2025-09-04T15:00:00+02:00"},{"SEK_per_kWh":0.30429,"EUR_per_kWh":0.02767,"EXR":10.997148,"time_start":"2025-09-04T15:00:00+02:00","time_end":"2025-09-04T16:00:00+02:00"},{"SEK_per_kWh":0.36675,"EUR_per_kWh":0.03335,"EXR":10.997148,"time_start":"2025-09-04T16:00:00+02:00","time_end":"2025-09-04T17:00:00+02:00"},{"SEK_per_kWh":0.58296,"EUR_per_kWh":0.05301,"EXR":10.997148,"time_start":"2025-09-04T17:00:00+02:00","time_end":"2025-09-04T18:00:00+02:00"},{"SEK_per_kWh":0.92145,"EUR_per_kWh":0.08379,"EXR":10.997148,"time_start":"2025-09-04T18:00:00+02:00","time_end":"2025-09-04T19:00:00+02:00"},{"SEK_per_kWh":1.5054,"EUR_per_kWh":0.13689,"EXR":10.997148,"time_start":"2025-09-04T19:00:00+02:00","time_end":"2025-09-04T20:00:00+02:00"},{"SEK_per_kWh":1.00888,"EUR_per_kWh":0.09174,"EXR":10.997148,"time_start":"2025-09-04T20:00:00+02:00","time_end":"2025-09-04T21:00:00+02:00"},{"SEK_per_kWh":0.63179,"EUR_per_kWh":0.05745,"EXR":10.997148,"time_start":"2025-09-04T21:00:00+02:00","time_end":"2025-09-04T22:00:00+02:00"},{"SEK_per_kWh":0.56382,"EUR_per_kWh":0.05127,"EXR":10.997148,"time_start":"2025-09-04T22:00:00+02:00","time_end":"2025-09-04T23:00:00+02:00"},{"SEK_per_kWh":0.52951,"EUR_per_kWh":0.04815,"EXR":10.997148,"time_start":"2025-09-04T23:00:00+02:00","time_end":"2025-09-05T00:00:00+02:00"}]""";
 
         // 2. Set the mock response using the static method.
-        ElpriserAPI.setMockResponse(fakeJson);
+        LocalDate today = LocalDate.of(2025, 9, 4);
+        ElpriserAPI.setMockResponseForDate(today,fakeJson);
 
         // 3. Create an instance of the class as a student would.
         ElpriserAPI api = new ElpriserAPI(false); // Disable caching for predictable tests
@@ -109,7 +110,8 @@ class MainTest {
                  {"SEK_per_kWh":0.30,"EUR_per_kWh":0.03,"EXR":10.0,"time_start":"2025-09-04T02:00:00+02:00","time_end":"2025-09-04T03:00:00+02:00"},
                  {"SEK_per_kWh":0.40,"EUR_per_kWh":0.04,"EXR":10.0,"time_start":"2025-09-04T03:00:00+02:00","time_end":"2025-09-04T04:00:00+02:00"}]""";
 
-        ElpriserAPI.setMockResponse(mockJson);
+        LocalDate today = LocalDate.of(2025, 9, 4);
+        ElpriserAPI.setMockResponseForDate(today,mockJson);
 
         Main.main(new String[]{"--zone", "SE3", "--date", "2025-09-04"});
 
@@ -127,7 +129,8 @@ class MainTest {
                  {"SEK_per_kWh":0.80,"EUR_per_kWh":0.08,"EXR":10.0,"time_start":"2025-09-04T02:00:00+02:00","time_end":"2025-09-04T03:00:00+02:00"},
                  {"SEK_per_kWh":0.30,"EUR_per_kWh":0.03,"EXR":10.0,"time_start":"2025-09-04T03:00:00+02:00","time_end":"2025-09-04T04:00:00+02:00"}]""";
 
-        ElpriserAPI.setMockResponse(mockJson);
+        LocalDate today = LocalDate.of(2025, 9, 4);
+        ElpriserAPI.setMockResponseForDate(today,mockJson);
 
         Main.main(new String[]{"--zone", "SE1", "--date", "2025-09-04"});
 
@@ -144,13 +147,22 @@ class MainTest {
 
     @Test
     void displaySortedPrices_whenRequested() {
-        String mockJson = """
-                [{"SEK_per_kWh":0.30,"EUR_per_kWh":0.03,"EXR":10.0,"time_start":"2025-09-04T00:00:00+02:00","time_end":"2025-09-04T01:00:00+02:00"},
-                 {"SEK_per_kWh":0.10,"EUR_per_kWh":0.01,"EXR":10.0,"time_start":"2025-09-04T01:00:00+02:00","time_end":"2025-09-04T02:00:00+02:00"},
-                 {"SEK_per_kWh":0.20,"EUR_per_kWh":0.02,"EXR":10.0,"time_start":"2025-09-04T02:00:00+02:00","time_end":"2025-09-04T03:00:00+02:00"},
-                 {"SEK_per_kWh":0.10,"EUR_per_kWh":0.01,"EXR":10.0,"time_start":"2025-09-04T03:00:00+02:00","time_end":"2025-09-04T04:00:00+02:00"}]""";
+        // This test ensures charging window can span days when next day data exists
+        LocalDate today = LocalDate.of(2025, 9, 4);
+        LocalDate tomorrow = today.plusDays(1);
 
-        ElpriserAPI.setMockResponse(mockJson);
+        String mockJsonToday = """
+                [{"SEK_per_kWh":0.30,"EUR_per_kWh":0.03,"EXR":10.0,"time_start":"2025-09-04T20:00:00+02:00","time_end":"2025-09-04T21:00:00+02:00"},
+                 {"SEK_per_kWh":0.10,"EUR_per_kWh":0.01,"EXR":10.0,"time_start":"2025-09-04T21:00:00+02:00","time_end":"2025-09-04T22:00:00+02:00"},
+                 {"SEK_per_kWh":0.20,"EUR_per_kWh":0.02,"EXR":10.0,"time_start":"2025-09-04T22:00:00+02:00","time_end":"2025-09-04T23:00:00+02:00"},
+                 {"SEK_per_kWh":0.10,"EUR_per_kWh":0.01,"EXR":10.0,"time_start":"2025-09-04T23:00:00+02:00","time_end":"2025-09-04T00:00:00+02:00"}]""";
+        String mockJsonTomorrow = """
+                [{"SEK_per_kWh":0.10,"EUR_per_kWh":0.01,"EXR":10.0,"time_start":"2025-09-05T00:00:00+02:00","time_end":"2025-09-05T01:00:00+02:00"},
+                 {"SEK_per_kWh":0.15,"EUR_per_kWh":0.015,"EXR":10.0,"time_start":"2025-09-05T01:00:00+02:00","time_end":"2025-09-05T02:00:00+02:00"},
+                 {"SEK_per_kWh":0.15,"EUR_per_kWh":0.015,"EXR":10.0,"time_start":"2025-09-05T02:00:00+02:00","time_end":"2025-09-05T03:00:00+02:00"}]""";
+
+        ElpriserAPI.setMockResponseForDate(today, mockJsonToday);
+        ElpriserAPI.setMockResponseForDate(tomorrow, mockJsonTomorrow);
 
         Main.main(new String[]{"--zone", "SE2", "--date", "2025-09-04", "--sorted"});
 
@@ -158,10 +170,13 @@ class MainTest {
 
         // Expected sorted output (ascending by price)
         List<String> expectedOrder = List.of(
-                "01-02 10,00 öre",
-                "03-04 10,00 öre",
-                "02-03 20,00 öre",
-                "00-01 30,00 öre"
+                "20-21 30,00 öre",
+                "22-23 20,00 öre",
+                "01-02 15,00 öre",
+                "02-03 15,00 öre",
+                "21-22 10,00 öre",
+                "23-00 10,00 öre",
+                "00-01 10,00 öre"
         );
 
         // Extract actual lines that match the pattern
@@ -183,7 +198,9 @@ class MainTest {
                  {"SEK_per_kWh":0.15,"EUR_per_kWh":0.015,"EXR":10.0,"time_start":"2025-09-04T03:00:00+02:00","time_end":"2025-09-04T04:00:00+02:00"},
                  {"SEK_per_kWh":0.30,"EUR_per_kWh":0.03,"EXR":10.0,"time_start":"2025-09-04T04:00:00+02:00","time_end":"2025-09-04T05:00:00+02:00"}]""";
 
-        ElpriserAPI.setMockResponse(mockJson);
+        LocalDate today = LocalDate.of(2025, 9, 4);
+
+        ElpriserAPI.setMockResponseForDate(today, mockJson);
 
         Main.main(new String[]{"--zone", "SE3", "--date", "2025-09-04", "--charging", "2h"});
 
@@ -204,7 +221,9 @@ class MainTest {
                  {"SEK_per_kWh":0.20,"EUR_per_kWh":0.02,"EXR":10.0,"time_start":"2025-09-04T04:00:00+02:00","time_end":"2025-09-04T05:00:00+02:00"},
                  {"SEK_per_kWh":0.30,"EUR_per_kWh":0.03,"EXR":10.0,"time_start":"2025-09-04T05:00:00+02:00","time_end":"2025-09-04T06:00:00+02:00"}]""";
 
-        ElpriserAPI.setMockResponse(mockJson);
+        LocalDate today = LocalDate.of(2025, 9, 4);
+
+        ElpriserAPI.setMockResponseForDate(today, mockJson);
 
         Main.main(new String[]{"--zone", "SE1", "--date", "2025-09-04", "--charging", "4h"});
 
@@ -223,7 +242,9 @@ class MainTest {
                 [{"SEK_per_kWh":0.20,"EUR_per_kWh":0.02,"EXR":10.0,"time_start":"2025-09-04T00:00:00+02:00","time_end":"2025-09-04T01:00:00+02:00"},
                  {"SEK_per_kWh":0.10,"EUR_per_kWh":0.01,"EXR":10.0,"time_start":"2025-09-04T01:00:00+02:00","time_end":"2025-09-04T02:00:00+02:00"},
                  {"SEK_per_kWh":0.15,"EUR_per_kWh":0.015,"EXR":10.0,"time_start":"2025-09-04T02:00:00+02:00","time_end":"2025-09-04T03:00:00+02:00"}]""";
-        ElpriserAPI.setMockResponse(mockJsonToday);
+        LocalDate today = LocalDate.of(2025, 9, 4);
+        ElpriserAPI.setMockResponseForDate(today,mockJsonToday);
+
         Main.main(new String[]{"--zone", "SE3", "--date", "2025-09-04", "--charging", "2h"});
         String output = bos.toString();
         // Best 2h window should be 01-03 (0.10 + 0.15)
@@ -235,7 +256,7 @@ class MainTest {
     void findOptimalCharging8Hours() {
         // Create mock data with 12 hours to allow for 8-hour window
         StringBuilder jsonBuilder = new StringBuilder("[");
-        double[] prices = {0.50, 0.10, 0.05, 0.15, 0.08, 0.12, 0.06, 0.09, 0.25, 0.30, 0.35, 0.40};
+        double[] prices = {0.50, 0.10, 0.05, 0.15, 0.08, 0.12, 0.06, 0.09, 0.25, 0.30, 0.35, 0.40, 0.50, 0.10, 0.05, 0.15, 0.08, 0.12, 0.06, 0.09, 0.25, 0.30, 0.35, 0.40};
 
         for (int i = 0; i < prices.length; i++) {
             if (i > 0) jsonBuilder.append(",");
@@ -243,12 +264,20 @@ class MainTest {
                     Locale.US,
                     """
                             {"SEK_per_kWh":%.2f,"EUR_per_kWh":%.3f,"EXR":10.0,"time_start":"2025-09-04T%02d:00:00+02:00","time_end":"2025-09-04T%02d:00:00+02:00"}""",
-                    prices[i], prices[i] / 10, i, i + 1
+                    prices[i], prices[i] / 10, i, (i + 1) % 24
             ));
         }
         jsonBuilder.append("]");
 
-        ElpriserAPI.setMockResponse(jsonBuilder.toString());
+        LocalDate today = LocalDate.of(2025, 9, 4);
+        ElpriserAPI.setMockResponseForDate(today, jsonBuilder.toString());
+
+        LocalDate tomorrow = today.plusDays(1);
+        String mockJsonTomorrow = """
+                [{"SEK_per_kWh":0.1,"EUR_per_kWh":0.01,"EXR":10.0,"time_start":"2025-09-05T00:00:00+02:00","time_end":"2025-09-05T01:00:00+02:00"},
+                 {"SEK_per_kWh":0.15,"EUR_per_kWh":0.015,"EXR":10.0,"time_start":"2025-09-05T01:00:00+02:00","time_end":"2025-09-05T02:00:00+02:00"},
+                 {"SEK_per_kWh":0.15,"EUR_per_kWh":0.015,"EXR":10.0,"time_start":"2025-09-05T02:00:00+02:00","time_end":"2025-09-05T03:00:00+02:00"}]""";
+        ElpriserAPI.setMockResponseForDate(tomorrow, mockJsonTomorrow);
 
         Main.main(new String[]{"--zone", "SE4", "--date", "2025-09-04", "--charging", "8h"});
 
@@ -359,66 +388,63 @@ class MainTest {
     }
 
     @Test
-    public void testHourlyMinMaxPrices() {
-        List<Double> quarterHourPrices = new ArrayList<>();
+    void testHourlyMinMaxPrices_with96Entries() {
+        // --- ARRANGE ---
+        LocalDate today = LocalDate.of(2025, 9, 4);
+        StringBuilder jsonBuilder = new StringBuilder("[");
 
-        // Simulate 96 prices: 24 hours, each with 4 quarter-hour prices
-        for (int i = 0; i < 96; i++) {
-            quarterHourPrices.add((double) (i % 24)); // repeating hourly pattern
-        }
+        for (int hour = 0; hour < 24; hour++) {
+            for (int quarter = 0; quarter < 4; quarter++) {
+                if (hour > 0 || quarter > 0) {
+                    jsonBuilder.append(",");
+                }
+                double price = (hour * 0.1) + (quarter * 0.01) + 0.10;
+                String time_start = String.format("2025-09-04T%02d:%02d:00+02:00", hour, quarter * 15);
+                String time_end = String.format("2025-09-04T%02d:%02d:00+02:00", hour, (quarter + 1) * 15);
+                if (quarter == 3) { // Handle end of hour
+                    time_end = String.format("2025-09-04T%02d:00:00+02:00", (hour + 1) % 24);
+                }
 
-        // Expected hourly averages
-        List<Double> hourlyAverages = new ArrayList<>();
-        for (int i = 0; i < 24; i++) {
-            double sum = 0;
-            for (int j = 0; j < 4; j++) {
-                sum += quarterHourPrices.get(i * 4 + j);
+                jsonBuilder.append(String.format(Locale.US,
+                        """
+                        {"SEK_per_kWh":%.4f,"EUR_per_kWh":0.01,"EXR":10.0,"time_start":"%s","time_end":"%s"}""",
+                        price, time_start, time_end));
             }
-            hourlyAverages.add(sum / 4.0);
         }
+        jsonBuilder.append("]");
+        ElpriserAPI.setMockResponseForDate(today, jsonBuilder.toString());
 
-        double expectedMin = Collections.min(hourlyAverages);
-        double expectedMax = Collections.max(hourlyAverages);
+        // --- ACT ---
+        Main.main(new String[]{"--zone", "SE3", "--date", "2025-09-04"});
 
-        // Call your method under test
-        PriceRange result = PriceCalculator.calculateHourlyMinMax(quarterHourPrices);
+        // --- ASSERT ---
+        String output = bos.toString();
+        assertThat(output).containsIgnoringCase("lägsta pris");
+        assertThat(output).containsIgnoringCase("högsta pris");
+        assertThat(output).containsIgnoringCase("medelpris");
 
-        assertThat(result.getMin()).isCloseTo(expectedMin, within(0.001));
-        assertThat(result.getMax()).isCloseTo(expectedMax, within(0.001));
+        // Expected Min: Hour 0 -> avg(0.10, 0.11, 0.12, 0.13) = 0.115 SEK/kWh = 11,50 öre
+        // Expected Max: Hour 23 -> avg(2.40, 2.41, 2.42, 2.43) = 2.415 SEK/kWh = 241,50 öre
+        assertThat(output).contains("00-01"); // Cheapest hour
+        assertThat(output).contains("23-00"); // Most expensive hour
+        assertThat(output).contains(formatOre(0.115));
+        assertThat(output).contains(formatOre(2.415));
+
+        // Calculate overall average for the day
+        double totalSum = 0;
+        for (int hour = 0; hour < 24; hour++) {
+            for (int quarter = 0; quarter < 4; quarter++) {
+                totalSum += (hour * 0.1) + (quarter * 0.01) + 0.10;
+            }
+        }
+        double expectedMean = totalSum / 96;
+        assertThat(output).contains("Medelpris: " + formatOre(expectedMean) + " öre");
     }
 
     private String formatOre(double sekPerKWh) {
         double ore = sekPerKWh * 100.0;
-        DecimalFormatSymbols symbols = DecimalFormatSymbols.getInstance(Locale.of("sv", "SE"));
+        DecimalFormatSymbols symbols = new DecimalFormatSymbols(new Locale("sv", "SE"));
         DecimalFormat df = new DecimalFormat("0.00", symbols);
         return df.format(ore);
-    }
-}
-class PriceRange {
-    private final double min;
-    private final double max;
-
-    public PriceRange(double min, double max) {
-        this.min = min;
-        this.max = max;
-    }
-
-    public double getMin() { return min; }
-    public double getMax() { return max; }
-}
-
-class PriceCalculator {
-    public static PriceRange calculateHourlyMinMax(List<Double> quarterHourPrices) {
-        List<Double> hourlyAverages = new ArrayList<>();
-        for (int i = 0; i < 24; i++) {
-            double sum = 0;
-            for (int j = 0; j < 4; j++) {
-                sum += quarterHourPrices.get(i * 4 + j);
-            }
-            hourlyAverages.add(sum / 4.0);
-        }
-        double min = Collections.min(hourlyAverages);
-        double max = Collections.max(hourlyAverages);
-        return new PriceRange(min, max);
     }
 }
