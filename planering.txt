@@ -1,0 +1,23 @@
+---------- Planering för uppgiften ----------
+KLAR - hämta priser idag: LocalDate.now()
+KLAR - hämta priser imorgon om möjligt: LocalDate.now.plusDays(1) - BARA OM DATAN FINNS annars returnerar 404.
+
+KLAR - Hämta priser för idag och imorgon (om det finns)
+KLAR - Slå ihop listorna om båda finns. Om bara IDAG finns kör vi på den.
+
+KLAR - Räkna ut medelvärdet för alla priser som vi hämtat (oftast 24h)
+KLAR - Om priserna för imorgon finns med, ta med dom också.
+KLAR - Summera alla sekPerKwh från listan och dela på antalet element.
+KLAR -  Skriv ut medelpriset i öre -> pris.sekPerKwh() * 100
+KLAR - Hitta billigaste och dyraste priset
+
+Ska räkna ut när det är bäst att ladda bilen beroende på hur lång tid som behövs laddas (2h, 4h, 8h)
+Sliding window: Titta på alla möjliga fönster av tex 2timmar i följd osv.
+Räkna ut summan (medelpriset) för de timmarna.
+Flytta fönstret en timme i taget och räkna igen.
+Välj det fönster som har lägst total kostnad.
+
+
+Zone ska gå att skicka som command-line.
+
+OBS: Skriva ut medelpris i öre??
