@@ -16,6 +16,7 @@ public class Main {
         boolean sorted = false;
         int chargingHours = 0;
         boolean help = false;
+        boolean interactive = Arrays.asList(args).contains("--interactive");
 
         for(int i = 0; i < args.length; i++){
             switch (args[i]){
@@ -24,8 +25,38 @@ public class Main {
                 case "--sorted" -> sorted = true;
                 case "--charging" -> chargingHours = Integer.parseInt(args[i + 1].replace("h", ""));
                 case "--help" -> help = true;
+                case "--interactive" -> interactive = true;
             }
         }
+
+
+        if (args.length == 0 && !interactive) {
+            printHelp();
+            return;
+        }
+        if (interactive) {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Welcome to Electricity Price Optimizer CLI by Adam Ottosson :)");
+
+            System.out.print("Enter zone (SE1, SE2, SE3, SE4): ");
+            zoneArg = sc.nextLine().trim();
+
+            System.out.print("Enter date (YYYY-MM-DD) or leave empty for today: ");
+            dateArg = sc.nextLine().trim();
+            if (dateArg.isEmpty()) {
+                dateArg = null;
+            }
+
+            System.out.print("Do you want prices sorted? (yes/no): ");
+            sorted = sc.nextLine().trim().equalsIgnoreCase("yes");
+
+            System.out.print("Enter charging window (2h, 4h, 8h) or leave empty: ");
+            String chargingInput = sc.nextLine().trim();
+            if (!chargingInput.isEmpty()) {
+                chargingHours = Integer.parseInt(chargingInput.replace("h", ""));
+            }
+        }
+
 
         if (help) {
             printHelp();
@@ -212,5 +243,6 @@ public class Main {
         System.out.println("  --sorted            Visa priser i stigande ordning");
         System.out.println("  --charging 2h|4h|8h Hitta optimalt laddfönster");
         System.out.println("  --help              Visa denna hjälptext");
+        System.out.println("  --interactive       Kör programmet interaktivt med en meny");
     }
 }
